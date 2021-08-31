@@ -1,0 +1,155 @@
+// ConsoleApplication3.cpp : Defines the entry point for the console application.
+//
+
+#include "stdafx.h"
+
+
+int _tmain(int argc, _TCHAR* argv[])
+{
+	return 0;
+}
+
+#include "stdafx.h"
+#include <iostream>
+#include <ios>
+#include <iomanip>
+#include <cmath>
+using namespace std;
+
+int main()
+{
+	cout << "**********Welcome to The Hemisphere Surface Area / Volume Calculator**********" << endl; //Output message that tells user that the program is used for
+	cout << endl;
+	double num, j, l; //inout variables for number of hemispheres and diameters
+	const double pi = acos(-1); //Symbolic Constant for the value of pi
+	double SA, V; //Output variables for Surface Area and Volume of Hemispheres
+	double sum = 0; //Sum variable used to add up surface areas and volumes of hemispheres
+	char response = 'y'; //Character Variable to see if the user wants to continue the program or not
+
+
+	cout << "Enter 1 to Calculate Surface Area of Hemispheres" << endl << "Enter 2 to Calculate Volume of Hemispheres" << endl; //Output message to ask user to input whether they want to find surface area or volume
+	cin >> j; //input variable to choose surface area or volume
+	while (j != 1 && j != 2) { //Loop Statement that makes sure user puts in a valid input value, if the user inputs any other value than 1 or 2 the program will not work and it will ask the question again
+		cout << "Invalid option... Please type in 1 or 2: " << endl; //Output message asking for value to find surface area or volume
+		cin >> j; //Input variable for surface area or volume using the values of 1 or 2
+	}
+
+	if (j == 1) { //If user selects value of 1 it will output the following
+		cout << "How Many Hemispheres Surface Areas Would You Like to Calculate?: "; //Output message asking for how many hemispheres the user would like to have to find the surface area for
+		cin >> num; //Input variable to see how many hemispheres the user wants
+		while (num <= 0) { //Error statement to make sure the user inputs a valid input value if not it will show the following 
+			cout << "Number of Hemishperes must be One or More: " << endl; //Tells user to put a positive value greater than or equal to 1
+			cout << "How Many Hemispheres Surface Areas Would You Like to Calculate?: "; //Asks the question again to the user
+			cin >> num; //Input variable to see how many hemispheres the user wants
+		}
+
+		for (int k = 1; k <= num; ++k) { //Loop statement used to see how many diameters are needed for each hemisphere the user wants for example if the user inputs 3 then the program will ask for 3 diameters
+			cout << "Enter the Diameter for Hemisphere " << k << " in meters: " << endl; //Output message asking the user the value of the diameter
+			cin >> l; //Input variable for diameter
+			while (l < 0) { //Error statement making sure the user inputs a valid input value so the following makes sure the diameter is a positive value
+				cout << "The Diameter Value Must not Be a Negative Value!!!" << endl; 
+				cout << "Enter the Diameter for Hemisphere " << k << " in meters: " << endl; //Asks for the diameter again
+				cin >> l; //Input vairable for diameter
+			}
+
+			SA = 3.0 * pi * (l / 2) * (l / 2); //Surface Area equation defined
+			cout << "The Suface Area with Diameter " << l << " meters" << " is: " << SA << " meters^2" << endl; //Output message after the diameter is used to find surface area
+			cout << endl;
+			sum = sum + SA; //This variable takes all of the Surface Areas from each hemisphere and adds them up which will be used for the average suface area which comes later on
+
+		}
+		cout << "The Average Surface Area of all " << num << " hemispheres is: " << sum / num << endl; //This is the statement that calculates the average surface area of all the hemispheres
+	}
+
+	if (j == 2) { //If the user inputs a value of 2 when choosing Volume or Surface Area they will calculate the volume of their hemispheres
+		cout << "How Many Hemispheres Volume Would You Like to Calculate?: "; //Output message asking for the user for how many hemispheres they want to calculate the volume for
+		cin >> num; //Input Variable for the amout of hemispheres
+		while (num <= 0) { //Error Statement basically stating there has to be a positive value of hemispheres
+			cout << "Number of Hemishperes must be One or More: " << endl;
+			cout << "How Many Hemispheres Volumes Would You Like to Calculate?: "; //Asking user to input how many hemispheres they want to calculate the volume for
+			cin >> num; //Input Variable for number of hemispheres
+		}
+		for (int k = 1; k <= num; ++k) { //Loop Statment for the multiple hemispheres so we can calculate the volume of each hemisphere with its respective diameter
+			cout << "Enter the Diameter for Hemisphere " << k << " in meters: " << endl; //Output message asking user to input diameeter value
+			cin >> l; //Input Variable for diameter
+			while (l < 0) { //Error Statement making sure the value of the diameter is positive
+				cout << "The Diameter Value Must not Be a Negative Value!!!" << endl;
+				cout << "Enter the Diameter for Hemisphere " << k << " in meters: " << endl; //Statement asking user for diameter again
+				cin >> l; //Input Variable for diameter
+			}
+			V = (2.0 * pi * (l / 2) * (l / 2) * (l / 2)) / 3; //Volume defined
+			cout << "The Volume with Diameter " << l << " meters" << " is: " << V << " meters^3" << endl; //Output message stating the volumes of each hemisphere
+			sum = sum + V; //Sum vairbale which adds the volumes of all the hemispheres that were found
+		}
+		cout << "The Average Volume of all " << num << " hemispheres is: " << sum / num << endl; //This statement is used to find the average volume of all the hemisphere
+	}
+	cout << "Would you Like to Run the Hemisphere Surface Area / Volume Calculator again?" << endl << "Enter Y or y for Yes or N or n for No: "; //Output message asking the user if they want to continue using the program
+	cin >> response; //Input variable for yes or no on continuing the program
+	if (response == 'y' || response == 'Y') { //if statement looping the entire program again if the user inputs y for yes
+		//This section is just the same as the top part of the code because we copied and pasted it again into a loop statement
+		cout << "Enter 1 to Calculate Surface Area of Hemispheres" << endl << "Enter 2 to Calculate Volume of Hemispheres" << endl;
+		cin >> j;
+		while (j != 1 && j != 2) {
+			cout << "Invalid option... Please type in 1 or 2: " << endl;
+			cin >> j;
+		}
+
+		if (j == 1) {
+			cout << "How Many Hemispheres Surface Areas Would You Like to Calculate?: ";
+			cin >> num;
+			while (num <= 0) {
+				cout << "Number of Hemishperes must be One or More: " << endl;
+				cout << "How Many Hemispheres Surface Areas Would You Like to Calculate?: ";
+				cin >> num;
+			}
+
+			for (int k = 1; k <= num; ++k) {
+				cout << "Enter the Diameter for Hemisphere " << k << " in meters: " << endl;
+				cin >> l;
+				while (l < 0) {
+					cout << "The Diameter Value Must not Be a Negative Value!!!" << endl;
+					cout << "Enter the Diameter for Hemisphere " << k << " in meters: " << endl;
+					cin >> l;
+				}
+
+				SA = 3.0 * pi * (l / 2) * (l / 2);
+				cout << "The Suface Area with Diameter " << l << " meters" << " is: " << SA << " meters^2" << endl;
+				cout << endl;
+				sum = sum + SA;
+
+			}
+			cout << "THe Average Surface Area of all " << num << " hemispheres is: " << sum / num << endl;
+		}
+
+		if (j == 2) {
+			cout << "How Many Hemispheres Volume Would You Like to Calculate?: ";
+			cin >> num;
+			while (num <= 0) {
+				cout << "Number of Hemishperes must be One or More: " << endl;
+				cout << "How Many Hemispheres Volumes Would You Like to Calculate?: ";
+				cin >> num;
+			}
+			for (int k = 1; k <= num; ++k) {
+				cout << "Enter the Diameter for Hemisphere " << k << " in meters: " << endl;
+				cin >> l;
+				while (l < 0) {
+					cout << "The Diameter Value Must not Be a Negative Value!!!" << endl;
+					cout << "Enter the Diameter for Hemisphere " << k << " in meters: " << endl;
+					cin >> l;
+				}
+				V = (2.0 * pi * (l / 2) * (l / 2) * (l / 2)) / 3;
+				cout << "The Volume with Diameter " << l << " meters" << " is: " << V << " meters^3" << endl;
+				sum = sum + V;
+			}
+			cout << "The Average Volume of all " << num << " hemispheres is: " << sum / num << endl;
+		}
+	}
+	//When the program asks if the user if the user wants to repeat the program but the user does not input y or n for yes or no it will ask the user again the same question to make sure they answer with a y or n
+	if (response != 'y' || response != 'Y' || response != 'n' || response != 'N') {
+		cout << "Enter Y or y for Yes or N or n for No: ";
+		cin >> response; //Input variable for y or n
+	}
+
+
+	return 0;
+}
